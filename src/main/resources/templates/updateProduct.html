@@ -8,7 +8,8 @@
 <body>
 <div class="container mt-5">
     <h1>Cập nhật Sản phẩm</h1>
-    <form th:action="@{/products/updateProduct(id=${id})}" th:object="${productsUpdate}" method="post" enctype="multipart/form-data">
+    <form th:action="@{/products/updateProduct/{id}(id=${id})}"
+          th:object="${productsUpdate}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="productName">Tên Sản phẩm</label>
             <input type="text" id="productName" th:field="*{productName}" class="form-control" required />
@@ -42,8 +43,8 @@
             <label for="status">Trạng thái</label>
             <select id="status" th:field="*{status}" class="form-control" required>
                 <option value="">Chọn trạng thái</option>
-                <option value="true" th:selected="${productsUpdate.status}">Sẵn hàng</option>
-                <option value="false" th:selected="${!productsUpdate.status}">Hết hàng</option>
+                <option value="true" th:selected="${#strings.equals(productsUpdate.status, 'true')}">Sẵn hàng</option>
+                <option value="false" th:selected="${#strings.equals(productsUpdate.status, 'false')}">Hết hàng</option>
             </select>
         </div>
         <div class="form-group">

@@ -15,6 +15,7 @@ public class FileService implements IFileService {
     private String path;
     @Value("8080")
     private Integer port;
+
     @Override
     public String uploadImage(MultipartFile file) {
         String fileName= file.getOriginalFilename();
